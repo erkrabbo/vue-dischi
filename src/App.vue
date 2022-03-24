@@ -1,11 +1,11 @@
 <template>
   <div id="app">
-    <header>
-      <img src="https://cantabrialabsdifacooper.it/wp-content/uploads/2021/03/png-clipart-spotify-logo-spotify-computer-icons-podcast-music-apps-miscellaneous-angle.png" alt="Spotify logo" width="50">
+    <header class="bg-secondary">
+      <img src="https://png2png.com/wp-content/uploads/2021/07/spotify_logo_png1.png" alt="Spotify logo" width="80">
     </header>
-    <main>
+    <main class="bg-dark py-2">
       <div class="container">
-        <div class="row row-cols-2 row-cols-md-4 row-cols-lg-5">
+        <div class="row row-cols-2 row-cols-md-4 row-cols-lg-5 gy-2 gx-3">
           <spoty-card v-for="card in cards" :key="card.title" :card-data="card" />
         </div>
       </div>
@@ -39,4 +39,5 @@ export default {
 
 <style lang="scss">
 @import "../node_modules/bootstrap/scss/bootstrap";
+
 </style>
