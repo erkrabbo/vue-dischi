@@ -3,7 +3,7 @@
     <header class="bg-secondary">
       <img src="https://png2png.com/wp-content/uploads/2021/07/spotify_logo_png1.png" alt="Spotify logo" width="80">
     </header>
-    <main class="bg-dark py-2">
+    <main class="bg-dark">
       <div class="container">
         <div class="row row-cols-2 row-cols-md-4 row-cols-lg-5 gy-2 gx-3">
           <spoty-card v-for="card in cards" :key="card.title" :card-data="card" />
@@ -39,5 +39,11 @@ export default {
 
 <style lang="scss">
 @import "../node_modules/bootstrap/scss/bootstrap";
+main{
+  padding: auto{
+    top: 5rem;
+    bottom: 5rem;
+  };
+}
 
 </style>
