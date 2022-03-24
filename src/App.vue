@@ -38,6 +38,8 @@ export default {
 </script>
 
 <style lang="scss">
+$secondary: #2e3a46;
+$dark: #1e2d3b;
 @import "../node_modules/bootstrap/scss/bootstrap";
 main{
   padding: auto{
