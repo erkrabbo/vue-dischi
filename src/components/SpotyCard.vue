@@ -8,6 +8,7 @@
           <span>{{ cardData.author}}</span>
           <p>{{ cardData.year }}</p>
         </div>
+        <a href="#" class="stretched-link"></a>
       </div>
     </div>
   </div>

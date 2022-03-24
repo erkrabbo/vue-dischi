@@ -5,7 +5,7 @@
     </header>
     <main class="bg-dark">
       <div class="container">
-        <div class="row row-cols-2 row-cols-md-4 row-cols-lg-5 gy-2 gx-3">
+        <div class="row row-cols-2 row-cols-md-4 row-cols-lg-5 gy-3 gx-5">
           <spoty-card v-for="card in cards" :key="card.title" :card-data="card" />
         </div>
       </div>
