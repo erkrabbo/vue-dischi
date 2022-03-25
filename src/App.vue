@@ -2,8 +2,8 @@
   <div id="app">
     <header class="bg-secondary d-flex">
       <img src="https://png2png.com/wp-content/uploads/2021/07/spotify_logo_png1.png" alt="Spotify logo" width="80">
-      <filter-select v-if="cards != null" :data-genres-list="genres" />
-      <filter-select v-if="cards != null" :data-genres-list="authors" />
+      <filter-select @filterList="filterBy" v-if="cards != null" :data-genres-list="genres" />
+      <!-- <filter-select @filterList="filterBy()" v-if="cards != null" :data-genres-list="authors" /> -->
     </header>
     <main class="bg-dark">
       <div class="container">
@@ -32,7 +32,9 @@ export default {
     return {
       cards: null,
       genres: [],
-      authors: []
+      authors: [],
+      query: '',
+      filtBy: 'title'
     }
   },
   computed: {
@@ -40,7 +42,7 @@ export default {
       return this.cards.filter(ele => {
         if (!this.genres.includes(ele.genre)) { this.genres.push(ele.genre) }
         if (!this.authors.includes(ele.author)) { this.authors.push(ele.author) }
-        if (ele.title.toLowerCase().includes('')) {
+        if (ele[this.filtBy].includes(this.query)) {
           return true
         } else {
           return false
@@ -51,6 +53,12 @@ export default {
   components: {
     SpotyCard,
     FilterSelect
+  },
+  methods: {
+    filterBy (sel) {
+      this.query = sel
+      this.filtBy = 'genre'
+    }
   },
   created () {
     setTimeout(() => axios.get('https://flynn.boolean.careers/exercises/api/array/music')
