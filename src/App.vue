@@ -2,8 +2,14 @@
   <div id="app">
     <header class="bg-secondary d-flex">
       <img src="https://png2png.com/wp-content/uploads/2021/07/spotify_logo_png1.png" alt="Spotify logo" width="80">
-      <filter-select @filterList="filterBy" v-if="cards != null" :data-list="genres" data-filter-type="genre" />
-      <filter-select @filterList="filterBy" v-if="cards != null" :data-list="authors" data-filter-type="author" />
+      <label class="text-white align-self-center me-2" for="fil">Scegli il filtro</label>
+      <select class="align-self-center" @change="rese" name="fil" v-model="filteringBy">
+        <option value="">All</option>
+        <option value="genre">Genere</option>
+        <option value="author">Autore</option>
+      </select>
+      <filter-select @filterList="filterBy" v-if="cards != null && filteringBy == 'genre'" :data-list="genres" data-filter-type="genre" />
+      <filter-select @filterList="filterBy" v-if="cards != null && filteringBy == 'author'" :data-list="authors" data-filter-type="author" />
     </header>
     <main class="bg-dark">
       <div class="container">
@@ -34,7 +40,8 @@ export default {
       genres: [],
       authors: [],
       query: '',
-      filtBy: 'title'
+      filtBy: 'title',
+      filteringBy: ''
     }
   },
   computed: {
@@ -58,6 +65,11 @@ export default {
     filterBy (sel, str) {
       this.query = sel
       this.filtBy = str
+    },
+    rese () {
+      if (this.filteringBy === '') {
+        this.query = ''
+      }
     }
   },
   created () {

@@ -1,5 +1,5 @@
 <template>
-  <select @change="$emit('filterList', getSel(), getType())" v-model="selected" class="ms-auto me-3 align-self-center" name="filter">
+  <select @change="$emit('filterList', getSel(), getType())" v-model="selected" class="ms-2 align-self-center" name="filter">
     <option value="">All</option>
     <option v-for="(ele, index) in dataList" :value="ele" :key="index">{{ele}}</option>
   </select>
@@ -15,7 +15,8 @@ export default {
   },
   props: {
     dataList: Array,
-    dataFilterType: String
+    dataFilterType: String,
+    filteringBy: String
   },
   methods: {
     getSel () {
@@ -28,6 +29,9 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+  select{
+    width: 200px;
+  }
 
 </style>
