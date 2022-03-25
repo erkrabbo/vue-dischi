@@ -2,8 +2,8 @@
   <div id="app">
     <header class="bg-secondary d-flex">
       <img src="https://png2png.com/wp-content/uploads/2021/07/spotify_logo_png1.png" alt="Spotify logo" width="80">
-      <filter-select @filterList="filterBy" v-if="cards != null" :data-genres-list="genres" />
-      <!-- <filter-select @filterList="filterBy()" v-if="cards != null" :data-genres-list="authors" /> -->
+      <filter-select @filterList="filterBy" v-if="cards != null" :data-list="genres" data-filter-type="genre" />
+      <filter-select @filterList="filterBy" v-if="cards != null" :data-list="authors" data-filter-type="author" />
     </header>
     <main class="bg-dark">
       <div class="container">
@@ -55,9 +55,9 @@ export default {
     FilterSelect
   },
   methods: {
-    filterBy (sel) {
+    filterBy (sel, str) {
       this.query = sel
-      this.filtBy = 'genre'
+      this.filtBy = str
     }
   },
   created () {

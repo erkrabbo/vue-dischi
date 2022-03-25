@@ -1,7 +1,7 @@
 <template>
-  <select @change="$emit('filterList', sel())" v-model="selected" class="ms-auto me-3 align-self-center" name="filter">
+  <select @change="$emit('filterList', getSel(), getType())" v-model="selected" class="ms-auto me-3 align-self-center" name="filter">
     <option value="">All</option>
-    <option v-for="(ele, index) in dataGenresList" :value="ele" :key="index">{{ele}}</option>
+    <option v-for="(ele, index) in dataList" :value="ele" :key="index">{{ele}}</option>
   </select>
 </template>
 
@@ -14,11 +14,15 @@ export default {
     }
   },
   props: {
-    dataGenresList: Array
+    dataList: Array,
+    dataFilterType: String
   },
   methods: {
-    sel () {
+    getSel () {
       return this.selected
+    },
+    getType () {
+      return this.dataFilterType
     }
   }
 }
