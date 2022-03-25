@@ -3,9 +3,9 @@
     <div class="card text-center border-0 bg-secondary">
       <div class="card-body">
         <img class="card-img-top" :src="cardData.poster" :alt="cardData.title">
-        <h2 class="card-title text-white mt-2">{{ cardData.title}}</h2>
+        <h2 class="card-title text-white mt-2">{{ cardData.title }}</h2>
         <div class="card-text">
-          <span>{{ cardData.author}}</span>
+          <span>{{ cardData.author }}</span>
           <p>{{ cardData.year }}</p>
         </div>
         <a href="#" class="stretched-link"></a>

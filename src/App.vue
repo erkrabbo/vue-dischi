@@ -1,12 +1,14 @@
 <template>
   <div id="app">
-    <header class="bg-secondary">
+    <header class="bg-secondary d-flex">
       <img src="https://png2png.com/wp-content/uploads/2021/07/spotify_logo_png1.png" alt="Spotify logo" width="80">
+      <filter-select v-if="cards != null" :data-genres-list="genres" />
+      <filter-select v-if="cards != null" :data-genres-list="authors" />
     </header>
     <main class="bg-dark">
       <div class="container">
         <div v-if="cards != null" class="row row-cols-2 row-cols-md-4 row-cols-lg-5 gy-3 gx-2 gx-xl-3 gx-xxl-5">
-          <spoty-card v-for="card in cards" :key="card.title" :card-data="card" />
+          <spoty-card v-for="card in filteredCards" :key="card.title" :card-data="card" />
         </div>
         <div v-else class="splash d-flex text-align-center">
           <div class="circle">
@@ -22,16 +24,33 @@
 <script>
 import axios from 'axios'
 import SpotyCard from './components/SpotyCard.vue'
+import FilterSelect from './components/FilterSelect.vue'
 
 export default {
   name: 'App',
   data () {
     return {
-      cards: null
+      cards: null,
+      genres: [],
+      authors: []
+    }
+  },
+  computed: {
+    filteredCards () {
+      return this.cards.filter(ele => {
+        if (!this.genres.includes(ele.genre)) { this.genres.push(ele.genre) }
+        if (!this.authors.includes(ele.author)) { this.authors.push(ele.author) }
+        if (ele.title.toLowerCase().includes('')) {
+          return true
+        } else {
+          return false
+        }
+      })
     }
   },
   components: {
-    SpotyCard
+    SpotyCard,
+    FilterSelect
   },
   created () {
     setTimeout(() => axios.get('https://flynn.boolean.careers/exercises/api/array/music')
